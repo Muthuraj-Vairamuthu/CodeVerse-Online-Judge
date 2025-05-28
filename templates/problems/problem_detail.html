@@ -34,24 +34,32 @@
     {% endfor %}
   {% endif %}
 
-  <form method="POST">
+    <hr>
+  <h4 class="mt-4">Run Your Code</h4>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="POST" action="{% url 'run_submission' problem.id %}">
     {% csrf_token %}
     <div class="mb-3">
       <label for="language" class="form-label">Language</label>
-      <select name="language" id="language" class="form-select">
-        <option value="py">Python</option>
-        <option value="cpp">C++</option>
-        <option value="java">Java</option>
+      <select name="language" id="language" class="form-select" disabled>
+        <option value="py" selected>Python (Only Python is supported for now)</option>
       </select>
     </div>
 
     <div class="mb-3">
       <label for="code" class="form-label">Code</label>
-      <textarea name="code" class="form-control" id="code" rows="12" placeholder="# Write your code here" required></textarea>
+      <textarea name="code" class="form-control" id="code" rows="12" placeholder="# Write your Python code here" required></textarea>
     </div>
 
-    <button type="submit" class="btn btn-success w-100">Submit Code</button>
+    <button type="submit" class="btn btn-primary w-100">Run Code</button>
   </form>
+
 </div>
 </body>
 </html>

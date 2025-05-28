@@ -126,3 +126,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+# Redirect after login
+LOGIN_REDIRECT_URL = '/problems/'
+
+# Redirect after logout (optional but recommended)
+LOGOUT_REDIRECT_URL = '/'

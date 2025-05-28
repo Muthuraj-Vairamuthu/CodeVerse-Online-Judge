@@ -12,11 +12,12 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Login successful.")
-            return redirect("/")  # Redirect to home/dashboard
+            return redirect("/problems/")  # ✅ Redirect here
         else:
             messages.error(request, "Invalid credentials.")
 
     return render(request, "accounts/login.html")
+
 
 def register_view(request):
     if request.method == "POST":
