@@ -41,3 +41,11 @@ class Submission(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.problem.title}"
+class TestCase(models.Model):
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE, related_name='testcases')
+    input_data = models.TextField()
+    expected_output = models.TextField()
+    is_sample = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"TestCase for {self.problem.title}"
